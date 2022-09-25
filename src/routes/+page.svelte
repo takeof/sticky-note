@@ -28,6 +28,7 @@
       .then(response => response.json())
       .catch(error => {sticky_notes: error.message})
 
+      console.log(result);
       stickyNotesList = result.sticky_notes;
       // stickyNotesList = [];
       // stickyNotesList.push({index: 1, text: 'hoge', top: 0})
