@@ -59,6 +59,12 @@ async function POST({ request }) {
       limit: item2.data.limit,
       memo: item2.data.memo
     } };
+  }).catch((error) => {
+    console.log(error);
+    item = { sticky_note: {
+      index: 0,
+      text: error.message + "-" + error.code
+    } };
   });
   return json(item);
 }

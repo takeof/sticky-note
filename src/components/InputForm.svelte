@@ -18,6 +18,8 @@
             text: text,
             memo: memo,
         }
+        text = '';
+        memo = '';
         dispatch('submit', { stickyNote });
     }
 </script>

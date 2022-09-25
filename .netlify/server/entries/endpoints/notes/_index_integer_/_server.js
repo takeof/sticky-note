@@ -10,6 +10,9 @@ async function DELETE({ params }) {
   var result;
   await syncList.syncListItems(params.index).remove().then((item) => {
     result = { deleted: item.index };
+  }).catch((error) => {
+    console.log(error);
+    result = { deleted: error.message + "-" + error.code };
   });
   return json(result);
 }

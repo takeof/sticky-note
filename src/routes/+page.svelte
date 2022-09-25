@@ -27,12 +27,7 @@
       })
       .then(response => response.json())
       // .catch(error => {sticky_notes: error.message + '-' + error.code})
-
-      console.log(result);
       stickyNotesList = result.sticky_notes;
-      // stickyNotesList = [];
-      // stickyNotesList.push({index: 1, text: 'hoge', top: 0})
-      console.log(stickyNotesList);
       console.log(`get end: ${Date.now()}`);
     }
   
@@ -75,7 +70,8 @@
     }
   
   </script>
-  <Button on:click={() => (dialogOpen = true)}>
+
+  <Button on:click={() => (dialogOpen = true)} style="margin-left: 20px;">
     <Label>Sticky Note+</Label>
   </Button>
 
