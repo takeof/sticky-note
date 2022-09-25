@@ -19,16 +19,16 @@
   
     async function getStickyNotes() {
       console.log(`get start: ${Date.now()}`);
-      let response = await fetch('/notes', {
-        'method': 'GET',
-        'headers': {
-          'Content-Type': 'application/json'
-        },
-      })
+      // let response = await fetch('/notes', {
+      //   'method': 'GET',
+      //   'headers': {
+      //     'Content-Type': 'application/json'
+      //   },
+      // })
   
-      let result = await response.json();
-      stickyNotesList = result.sticky_notes;
-      console.log(result.sticky_notes);
+      // let result = await response.json();
+      // stickyNotesList = result.sticky_notes;
+      // console.log(result.sticky_notes);
       console.log(`get end: ${Date.now()}`);
       stickyNotesList.push({index: 1, text: 'hoge', top: 0})
     }
