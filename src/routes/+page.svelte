@@ -28,7 +28,7 @@
   
       let result = await response.json();
       stickyNotesList = result.sticky_notes;
-      console.log(`${result.sticky_notes}`);
+      console.log(result.sticky_notes);
       console.log(`get end: ${Date.now()}`);
     }
   
