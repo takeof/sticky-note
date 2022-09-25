@@ -30,6 +30,7 @@
       stickyNotesList = result.sticky_notes;
       console.log(result.sticky_notes);
       console.log(`get end: ${Date.now()}`);
+      stickyNotesList.push({index: 1, text: 'hoge', top: 0})
     }
   
     async function createStickyNote() {

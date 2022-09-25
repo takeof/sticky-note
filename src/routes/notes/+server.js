@@ -38,7 +38,7 @@ export async function GET() {
     })
     .catch((error) => {
         console.log(error);
-        list.push({index: 0, text: error.message, top: 0});
+        // list.push({index: 0, text: error.message, top: 0});
     });
     // list.sort((a, b) => {
     //     if (a.limit == b.limit) {
