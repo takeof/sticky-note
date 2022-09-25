@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { json } from '@sveltejs/kit';
-import { Twilio } from 'twilio';
+import Twilio from 'twilio';
 
 const accountSid = 'AC6f3aa9045df387be43f57805de676287';
 const authToken = 'a2611006ab90cc76a32eb55d7ce3d349'; 
