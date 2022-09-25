@@ -19,18 +19,20 @@
   
     async function getStickyNotes() {
       console.log(`get start: ${Date.now()}`);
-      // let response = await fetch('/notes', {
-      //   'method': 'GET',
-      //   'headers': {
-      //     'Content-Type': 'application/json'
-      //   },
-      // })
-  
-      // let result = await response.json();
-      // stickyNotesList = result.sticky_notes;
-      // console.log(result.sticky_notes);
+      let result = await fetch('/notes', {
+        'method': 'GET',
+        'headers': {
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(response => response.json())
+      .catch(error => {sticky_notes: error.message})
+
+      stickyNotesList = result.sticky_notes;
+      // stickyNotesList = [];
+      // stickyNotesList.push({index: 1, text: 'hoge', top: 0})
+      console.log(stickyNotesList);
       console.log(`get end: ${Date.now()}`);
-      stickyNotesList.push({index: 1, text: 'hoge', top: 0})
     }
   
     async function createStickyNote() {
@@ -73,7 +75,7 @@
   
   </script>
   <Button on:click={() => (dialogOpen = true)}>
-    <Label>Sticky Note</Label>
+    <Label>Sticky Note+</Label>
   </Button>
 
   <!-- <form on:submit|preventDefault = { createStickyNote}>

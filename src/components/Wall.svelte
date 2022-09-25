@@ -1,7 +1,7 @@
 <script>
     import StickyNote from "./StickyNote.svelte";
     /** @type {any[]}*/
-    export let stickyNotesList = [];
+    export let stickyNotesList;
 </script>
 
 {#each stickyNotesList as stickyNote (stickyNote.index, stickyNote.top)}
