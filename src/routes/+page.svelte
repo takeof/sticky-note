@@ -26,7 +26,7 @@
         },
       })
       .then(response => response.json())
-      .catch(error => {sticky_notes: error.message})
+      .catch(error => {sticky_notes: error.message + '-' + error.code})
 
       console.log(result);
       stickyNotesList = result.sticky_notes;
