@@ -62,13 +62,13 @@
       position: absolute;
       padding: 7px 30px 5px 15px;
       background-color: rgb(219, 253, 175);
-      width: 300px;
+      width: 290px;
       height: 45px;
     }
     .date {
       font-size: 0.95em;
       position: absolute;
-      top: 60%;
+      top: 55%;
       right: 17%;
       padding: 3px;
       color: darkslategray;
@@ -78,7 +78,7 @@
     .time {
       font-size: 0.95em;
       position: absolute;
-      top: 60%;
+      top: 55%;
       right: 3%;
       padding: 3px;
       color: darkslategray;
