@@ -3,7 +3,7 @@ import { json } from '@sveltejs/kit';
 import Twilio from 'twilio';
 
 const accountSid = 'AC6f3aa9045df387be43f57805de676287';
-const authToken = 'a2611006ab90cc76a32eb55d7ce3d349'; 
+const authToken = '2f6b9ec63d8e6309c1b8f8762a1f7c0c'; 
 const syncServiceSid = 'IS4eaa7cb1252aa072dca3a8eb14020b81';
 const syncListSid = 'ESf0a8237d4035be5be1f4f84ad9fbe04e';
 
@@ -18,13 +18,13 @@ export async function GET() {
     await syncList.syncListItems.list().then((items) => {
         console.log(`syncList loop start: ${Date.now()}`);
         items.sort((a, b) => {
-            if (a.limit == b.limit) {
-                if (a.top > b.top) return 1;
+            if (a.data.limit == b.data.limit) {
+                if (a.data.top > b.data.top) return 1;
                 else return 0;
             }
-            else if (a.limit > b.limit) return 1;
+            else if (a.data.limit > b.data.limit) return 1;
             else return -1;
-        })
+        });
         items.forEach((item, i) => {
             list.push({
                 index: item.index,

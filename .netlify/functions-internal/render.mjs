@@ -5,7 +5,7 @@ export const handler = init({
 	assets: new Set(["favicon.png","smui.css"]),
 	mimeTypes: {".png":"image/png",".css":"text/css"},
 	_: {
-		entry: {"file":"_app/immutable/start-cbf3848e.js","imports":["_app/immutable/start-cbf3848e.js","_app/immutable/chunks/index-79404d3a.js","_app/immutable/chunks/singletons-e305392e.js","_app/immutable/chunks/index-e9bace29.js"],"stylesheets":[]},
+		entry: {"file":"_app/immutable/start-4524812f.js","imports":["_app/immutable/start-4524812f.js","_app/immutable/chunks/index-02da1b48.js","_app/immutable/chunks/singletons-feafa537.js","_app/immutable/chunks/index-8e2f19e4.js"],"stylesheets":[]},
 		nodes: [
 			() => import('../server/nodes/0.js'),
 			() => import('../server/nodes/1.js'),
