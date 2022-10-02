@@ -70,7 +70,7 @@
       position: absolute;
       top: 55%;
       right: 17%;
-      padding: 3px;
+      padding: 3px 3px 2px 3px;
       color: darkslategray;
       background-color: rgb(219, 253, 175);
       border: none;
@@ -80,7 +80,7 @@
       position: absolute;
       top: 55%;
       right: 3%;
-      padding: 3px;
+      padding: 3px 3px 2px 3px;
       color: darkslategray;
       background-color: rgb(219, 253, 175);
       border: none;
