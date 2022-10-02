@@ -42,16 +42,10 @@ async function GET() {
   return json({ sticky_notes: list });
 }
 async function POST({ request }) {
-  const { text, limit, memo, color } = await request.json();
+  const { data } = await request.json();
   var item;
   await syncList.syncListItems.create({
-    data: {
-      text,
-      limit,
-      memo,
-      top: 50,
-      color
-    }
+    data
   }).then((item2) => {
     item2 = { sticky_note: {
       index: item2.index,

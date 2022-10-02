@@ -47,16 +47,11 @@ export async function GET() {
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
-    const { text, limit, memo, color } = await request.json();
+    // const { text, limit, memo, color } = await request.json();
+    const { data } = await request.json();
     var item;
     await syncList.syncListItems.create({
-        data: {
-            text: text,
-            limit: limit,
-            memo: memo,
-            top: 50,
-            color: color,
-        }
+        data: data
     })
     .then((item) => {
         item = {sticky_note: {

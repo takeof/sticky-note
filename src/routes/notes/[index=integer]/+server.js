@@ -10,6 +10,30 @@ const syncListSid = 'ESf0a8237d4035be5be1f4f84ad9fbe04e';
 const client = new Twilio(accountSid, authToken);
 const syncList = client.sync.v1.services(syncServiceSid).syncLists(syncListSid);
 
+export async function PUT({ request, params }) {
+    const { data } = await request.json();
+    var item;
+    await syncList.syncListItems(params.index).update({
+        data: data,
+    })
+    .then((item) => {
+        item = {sticky_note: {
+                    index: item.index, 
+                    text: item.data.text,
+                    limit: item.data.limit,
+                    memo: item.data.memo,
+                }}
+    })
+    .catch((error) => {
+        console.log(error);
+        item = {sticky_note: {
+            index: 0, 
+            text: error.message + '-' + error.code, 
+        }};
+    });
+    return json(item);
+}
+
 /** @type {import('./$types').RequestHandler} */
 export async function DELETE({ params }) {
     var result;

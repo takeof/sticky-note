@@ -9,9 +9,9 @@
     let stickyNotesList = [];
     /** @type {any}*/
     let stickyNote;
-    let currentText = '';
-    let currentMemo = '';
     let dialogOpen = false;
+    let editing = false;
+    let targetIndex = -1;
   
     onMount(async() => {
       await getStickyNotes();
@@ -33,22 +33,29 @@
   
     async function createStickyNote() {
       console.log(`create start: ${Date.now()}`);
-      let response = await fetch('/notes', {
-        'method': 'POST',
+      var method = 'POST';
+      var url = '/notes'
+      if (editing) {
+        method = 'PUT';
+        url = url + `/${targetIndex}`
+      }
+      let response = await fetch(url, {
+        'method': method,
         'headers': {
           'Content-Type': 'application/json'
         },
         'body': JSON.stringify({
-          'text': stickyNote.text,
-          'limit': Date.now() + 24 * 60 * 60 * 1000,
-          'memo': stickyNote.memo,
-          'color': '',
+          'data': {
+            'text': stickyNote.text,
+            'limit': stickyNote.limit,
+            'memo': stickyNote.memo,
+            'top' : 50,
+            'color': '',
+          }
         })
       })
   
       response.status === 200 && await getStickyNotes();
-      currentText = '';
-      currentMemo = '';
       console.log(`create end: ${Date.now()}`);
     }
   
@@ -57,8 +64,8 @@
   */
     async function deleteStickyNote(event) {
       console.log(`del start: ${Date.now()}`);
-      const index = event.detail.index;
-      let response = await fetch(`/notes/${index}`, {
+      targetIndex = event.detail.index;
+      let response = await fetch(`/notes/${targetIndex}`, {
         'method': 'DELETE',
         'headers': {
           'Content-Type': 'application/json'
@@ -68,22 +75,24 @@
       response.status === 200 && await getStickyNotes();
       console.log(`del end: ${Date.now()}`);
     }
+
+    /**
+     * @param {{ detail: { index: any; }; }} event
+     */
+    function editSickyNote(event) {
+      targetIndex = event.detail.index;
+      stickyNote = stickyNotesList.filter((note) => note.index === targetIndex)[0];
+      editing = true;
+      dialogOpen = true;
+    }
   
   </script>
 
-  <Button on:click={() => (dialogOpen = true)} style="margin-left: 20px;">
+  <Button on:click={() => {dialogOpen = true; editing = false;}} style="margin-left: 20px;">
     <Label>Sticky Note+</Label>
   </Button>
 
-  <!-- <form on:submit|preventDefault = { createStickyNote}>
-    <div>
-      Enter your note...
-      <input bind:value={ currentText } type="text" id="stickyNote" />
-      <input bind:value={ currentMemo } type="text" id="stickyNoteMemo" />
-    </div>
-    <button type="submit">Sticky Note +</button>
-  </form> -->
   
-  <Wall bind:stickyNotesList={stickyNotesList} on:remove={deleteStickyNote} />
+  <Wall bind:stickyNotesList={stickyNotesList} on:remove={deleteStickyNote} on:edit={editSickyNote}/>
 
-  <InputForm bind:stickyNote={stickyNote} bind:open={dialogOpen} on:submit={createStickyNote}/>
+  <InputForm bind:stickyNote={stickyNote} bind:open={dialogOpen} bind:edit={editing} on:submit={createStickyNote}/>
