@@ -5,16 +5,20 @@
     import Textfield from '@smui/textfield';
     import Icon from '@smui/textfield/icon';
     import HelperText from '@smui/textfield/helper-text';
-    import { DateInput} from 'date-picker-svelte';
+    import { DateInput, localeFromDateFnsLocale } from 'date-picker-svelte';
+    import { Datepicker } from 'svelte-calendar';
   
     const dispatch = createEventDispatcher();
+    //const locale = localeFromDateFnsLocale(ja)
+
     /** @type {any} */
     export let stickyNote = {};
     export let open = false;
     export let edit = false;
     let text = '';
     let memo = '';
-    let date = '';
+    let date = ''
+    //let date = new Date();
 
     function openingHandler() {
       if(edit) {
@@ -88,10 +92,11 @@
       <Textfield bind:value={date} label="Limit">
         <Icon class="material-icons" slot="trailingIcon">today</Icon>
       </Textfield>
-      <!-- <DateInput bind:value={date} 
-        format="yyyy/MM/dd HH:mm"
+      <!--<DateInput bind:value={date} 
+        format="yyyy/MM/dd"
         placeholder="${new Date()}"
-        closeOnSelection /> -->
+        closeOnSelection />-->
+      <!--<Datepicker /> -->
     </div>
     <div class="input-item">
         <Textfield textarea bind:value={memo} label="Memo" input$rows={4}>
@@ -120,4 +125,5 @@
     .input-item {
         margin-bottom: 20px;
     }
+    
 </style>
