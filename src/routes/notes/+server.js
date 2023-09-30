@@ -3,7 +3,7 @@ import { json } from '@sveltejs/kit';
 import Twilio from 'twilio';
 
 const accountSid = 'AC6f3aa9045df387be43f57805de676287';
-const authToken = '8a073c67126779389fa9fc1f17a718c5'; 
+const authToken = '038fae56260e02b51b8fb26338758e03'; 
 const syncServiceSid = 'IS4eaa7cb1252aa072dca3a8eb14020b81';
 const syncListSid = 'ESf0a8237d4035be5be1f4f84ad9fbe04e';
 
